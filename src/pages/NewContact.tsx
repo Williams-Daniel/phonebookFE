@@ -80,7 +80,7 @@ const NewContact = () => {
 
                     <div
             className="
-            w-[270px]
+            w-[280px]
             text-center
             text-[25px]
             text-slate-800
@@ -100,7 +100,7 @@ const NewContact = () => {
                   .pauseFor(1500)
                   .deleteAll()
 
-                  .typeString(`Add to your contact`)
+                  .typeString(`Add to your contacts`)
                   .pauseFor(100)
                   .deleteAll()
                   .start();

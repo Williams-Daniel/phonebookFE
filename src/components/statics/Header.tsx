@@ -1,5 +1,5 @@
 import {ImSearch} from "react-icons/im"
-import { Link } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 const Header = () => {
   return (
     <div className="
@@ -18,12 +18,12 @@ const Header = () => {
       items-center
       justify-between
       ">
-<Link to="/homepage">
+<NavLink to="/homepage">
 <div  className="
 text-[20px]
 font-[600]
 ">sabi-KONect</div>
-</Link>
+</NavLink>
 <div className="
 w-[300px]
 h-[40px]
@@ -52,15 +52,16 @@ items-center
 </div>
 <div className="
 flex
-w-[280px]
+w-[150px]
 justify-between
 text-[14px]
 ">
-  <Link to="/new-contact">
+  <NavLink to="/new-contact">
   <div>New contact</div>
-  </Link>
-  <div>My contacts</div>
+  </NavLink>
+  <NavLink to="/profile">
   <div>Profile</div>
+  </NavLink>
 </div>
       </div>
     </div>

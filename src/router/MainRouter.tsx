@@ -3,6 +3,7 @@ import Layout from "../components/common/Layout";
 import LandingPage from "../pages/LandingPage";
 import HomePage from "../pages/HomePage";
 import NewContact from "../pages/NewContact";
+import Profile from "../pages/Profile";
 
 
 const MainRouter = createBrowserRouter([
@@ -21,6 +22,10 @@ const MainRouter = createBrowserRouter([
             {
                 path:"/new-contact",
                 element:<NewContact/>
+            },
+            {
+                path:"/profile",
+                element:<Profile/>
             },
         ]
     }

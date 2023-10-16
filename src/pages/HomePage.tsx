@@ -1,30 +1,12 @@
 import Header from "../components/statics/Header"
-import {AiOutlineStar,AiOutlineCamera} from "react-icons/ai"
+import {AiOutlineStar} from "react-icons/ai"
 import {BiSolidEditAlt,BiDotsVerticalRounded} from "react-icons/bi"
-import img from "../assets/dummy-prod-1.jpg"
-import { useState } from "react"
+import { useGetAllContacts } from "../Hooks/customHooks"
+
 
 const HomePage = () => {
 
-  const [avatar,setAvatar] = useState<string>(img)
-  const [image,setImage] = useState<string>("")
-
-  const onHandleImage = (el:any)=>{
-    const localImage = el.target.file[0]
-    const saveImage = URL.createObjectURL(localImage)
-    setAvatar(saveImage)
-    setImage(localImage)
-  }
-
-
-  const formData = new FormData()
-  formData.append("avatar",image)
-
-  // MdUpdate(formData).then((res)=>{
-  //   console.log(first)
-  // })
-
-
+  const {data} = useGetAllContacts();
   return (
     <div>
       <Header/>
@@ -37,15 +19,25 @@ const HomePage = () => {
       ">
         <div className="
         w-[90%]
-        min-h-[100vh]
-        mt-[10px]
+        h-[100%]
+        mt-[20px]
+        flex
+        flex-wrap
+        justify-between
         ">
-          <div className="
+          {
+            data?.map((el:any)=>{
+              return(
+                <div 
+                className="
           w-[350px]
           h-[350px]
           bg-slate-300
           rounded-[10px]
-          ">
+          mb-[20px]
+          "
+          key={el._id}
+          >
             <div className="
             w-[100%]
             mt-[10px]
@@ -74,105 +66,105 @@ const HomePage = () => {
                 mt-[10px]
                 "/>
               </div>
+              
               <div className="
-              w-[100%]
-              h-[200px]
+              w-[130px]
+              h-[130px]
+              rounded-[50%]
+              bg-white
+              mt-[15px]
+              mb-[10px]
               flex
-              flex-col
-              items-center
               justify-center
-              ">
-                <div className="
-                w-[123px]
-                h-[123px]
-                rounded-[50%]
-                bg-white
-                flex
-                justify-center
-                items-center
-                ">
-                <img className="
-                w-[120px]
-                h-[120px]
-                rounded-[50%]
-                bg-slate-500
-                object-cover
-                "
-                src={avatar}
-                />
-                </div>
-                <div className="
-                flex
-                mt-[5px]
-                ">
-                <div className="
-                px-[10px]
-                py-[2px]
-                bg-slate-800
-                text-white
-                text-[12px]
-                rounded-[30px]
-                mr-[10px]
-                ">update</div>
-                <label className="
-                w-[25px]
-                h-[25px]
-                rounded-[50%]
-                flex
-                justify-center
-                items-center
-                bg-slate-800
-                "
-                htmlFor="image"
-                ><AiOutlineCamera className="
-                text-white
-                "/></label>
-                </div>
-                <input className="
-                bg-[black]
-                hidden
-                "
-                type="file"
-                placeholder="image"
-                accept="image/png,image/jpg,image/jpeg,"
-                id="image"
-                onChange={onHandleImage}
-                />
-              </div>
+              items-center
+              text-[40px]
+              font-[500]
+              ">{el.avatar}</div>
               <div className="
               w-[90%]
-              h-[100px]
+              h-[140px]
               bg-[white]
               rounded-[10px]
               flex
+              flex-col
               justify-center
+              pl-[15px]
               ">
                 <div className="
-                w-[90%]
+                mb-[5px]
                 flex
-                flex-col
-                items-center
                 ">
                   <div className="
-                  flex
-                  text-[25px]
+                  text-[14px]
                   font-[500]
-                  justify-center
-                  mt-[20px]
-                  ">
-                  <div>Williams</div>
+                  ">firstName:</div>
                   <div className="
+                  text-[14px]
+                  font-[500]
                   ml-[5px]
-                  ">Daniel</div>
-                  </div>
+                  ">{el.firstName}</div>
+                </div>
+                <div className="
+                mb-[5px]
+                flex
+                ">
                   <div className="
-                  text-[18px]
-                  font-[600]
-                  ">09091468987</div>
+                  text-[14px]
+                  font-[500]
+                  ">lastName:</div>
+                  <div className="
+                  text-[14px]
+                  font-[500]
+                  ml-[5px]
+                  ">{el.lastName}</div>
+                </div>
+                <div className="
+                mb-[5px]
+                flex
+                ">
+                  <div className="
+                  text-[14px]
+                  font-[500]
+                  ">Email:</div>
+                  <div className="
+                  text-[14px]
+                  font-[500]
+                  ml-[5px]
+                  ">{el.email}</div>
+                </div>
+                <div className="
+                flex
+                mb-[5px]
+                ">
+                  <div className="
+                  text-[14px]
+                  font-[500]
+                  ">phoneNumber:</div>
+                  <div className="
+                  text-[14px]
+                  font-[500]
+                  ml-[5px]
+                  ">{el.phoneNumber}</div>
+                </div>
+                <div className="
+                flex
+                ">
+                  <div className="
+                  text-[14px]
+                  font-[500]
+                  ">Label:</div>
+                  <div className="
+                  text-[14px]
+                  font-[500]
+                  ml-[5px]
+                  ">{el.label}</div>
                 </div>
               </div>
             </div>
           </div>
+              )
+            })
+          }
         </div>
       </div>
     </div>
@@ -180,3 +172,7 @@ const HomePage = () => {
 }
 
 export default HomePage
+
+
+
+// 
